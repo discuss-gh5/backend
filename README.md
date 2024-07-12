@@ -31,9 +31,9 @@ pip install -r requirements.txt
 
 Rename ```env``` to ```.env``` and update the paths accordingly:
 ```bash
-MODEL_ADDRESS           = model
-IMAGE_ADDRESS           = images
-CURRENT_KEYPOINT_NAME   = all_keypoint
+MODEL_ADDRESS           = "model"
+IMAGE_ADDRESS           = "images"
+CURRENT_KEYPOINT_NAME   = "all_keypoint"
 ```
 ## Run Locally
 
