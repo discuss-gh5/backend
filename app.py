@@ -12,7 +12,7 @@ from init import model_address
 
 app = Flask(__name__)
 
-df = pd.read_csv(f"{model_address}/keypoint.csv")
+df = pd.read_csv(f"{model_address}/all_keypoint.csv")
 label_encoder = LabelEncoder()
 label_encoder.fit(df["label"])
 
