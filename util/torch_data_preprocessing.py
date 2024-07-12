@@ -10,7 +10,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
-df = pd.read_csv(f"{model_address}/keypoint.csv")
+keypoint_name = "all_keypoint"
+
+df = pd.read_csv(f"{model_address}/{keypoint_name}.csv")
 
 X = df.drop("label", axis=1)
 y = df["label"]

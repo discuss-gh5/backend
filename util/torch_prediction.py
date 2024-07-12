@@ -14,7 +14,7 @@ import pandas as pd
 import torch.nn as nn
 from sklearn.preprocessing import LabelEncoder
 
-df = pd.read_csv(f"{model_address}/keypoint.csv")
+df = pd.read_csv(f"{model_address}/all_keypoint.csv")
 label_encoder = LabelEncoder()
 label_encoder.fit(df["label"])
 

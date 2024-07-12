@@ -11,13 +11,16 @@ import mediapipe as mp
 import time
 
 
+keypoint_name = "all_keypoint"
+
+
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 mp_drawing = mp.solutions.drawing_utils
 
 cap = cv2.VideoCapture(0)
 
-keypoint_file = open(f"{model_address}/keypoint.csv", "w", newline="")
+keypoint_file = open(f"{model_address}/{keypoint_name}.csv", "w", newline="")
 csv_writer = csv.writer(keypoint_file)
 csv_writer.writerow(
     ["label"]
@@ -84,6 +87,21 @@ def collect_data_manually(label):
 # for label in labels:
 #     collect_data_from_image(f"images/{label}.png", label)
 
-labels = ["One", "Two", "Three", "Four", "Five"]
-for label in labels:
-    collect_data_manually(label)
+# labels = ["One", "Two", "Three", "Four", "Five"]
+
+labels = [
+    "Good",
+    "Bad",
+    "Hello",
+    "I love you",
+    "Fuck you",
+    "Please",
+    "My",
+    "Name",
+    "You",
+]
+
+# for label in labels:
+#     collect_data_manually(label)
+
+collect_data_manually("I love you")
