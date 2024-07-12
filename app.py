@@ -9,8 +9,11 @@ from sklearn.preprocessing import LabelEncoder
 from io import BytesIO
 from PIL import Image
 from init import model_address
+import base64
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 df = pd.read_csv(f"{model_address}/all_keypoint.csv")
 label_encoder = LabelEncoder()
@@ -68,11 +71,15 @@ def predict_gestures(model, input_data, label_encoder):
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    if "image" not in request.files:
-        return jsonify({"error": "No image uploaded"}), 400
+    data = request.json
+    image_data = data.get("image")
 
-    file = request.files["image"]
-    image = Image.open(BytesIO(file.read()))
+    if image_data is None:
+        return jsonify({"error": "No image provided"}), 400
+
+    # Decode base64 image data
+    image_data = image_data.split(",")[1]
+    image = Image.open(BytesIO(base64.b64decode(image_data)))
     frame = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
