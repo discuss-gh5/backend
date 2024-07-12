@@ -1,0 +1,4 @@
+# don't forget to rename to .env
+
+MODEL_ADDRESS = "model"
+IMAGE_ADDRESS = "images"
